@@ -59,9 +59,17 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-      - asset/logo.png
+      - asset/image/login-image.png
   #   - images/a_dot_ham.jpeg
-
+  fonts:
+    - family: Lato
+      fonts:
+        - asset: assets/fonts/Lato-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Lato-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Lato-Bold.ttf
+          weight: 700
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

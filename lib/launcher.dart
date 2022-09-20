@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:async';
 import './landing.dart';
+import 'package:Delon/login_view.dart';
 
 class LauncherPage extends StatefulWidget {
   @override
@@ -15,10 +16,13 @@ class _LauncherPageState extends State<LauncherPage> {
     startLaunching();
   }
   startLaunching() async {
-    var duration = const Duration(seconds: 3);
-    return new Timer(duration, () {
-      Navigator.of(context).pushReplacement(new MaterialPageRoute(builder: (_) {
-        return new LandingPage() ;
+    var duration = const Duration(seconds: 2);
+    return Timer(duration, () {
+      //pindah ke halaman login
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (_) {
+          //return HomePage();
+        return LoginPage() ;
       }));
     });
   }
@@ -50,7 +54,7 @@ class _LauncherPageState extends State<LauncherPage> {
           children: <Widget>[
             new Center(
               child: new Image.asset(
-                "asset/logo.png",
+                "asset/image/login-image.png",
                 height: 680.0,
                 width: 1600.0,
               ),
