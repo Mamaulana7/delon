@@ -1,21 +1,33 @@
+import 'dart:convert';
+import 'dart:html';
+import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:Delon/register_view.dart';
+import 'package:Delon/landing.dart';
 import 'package:Delon/theme.dart';
 import 'package:Delon/widgets/custom_checkbox.dart';
 import 'package:Delon/widgets/primary_button.dart';
+import 'landing.dart';
+
 class LoginPage extends StatefulWidget {
-  const LoginPage({ Key? key }) : super(key: key);
+  // const LoginPage({ Key? key }) : super(key: key);
   @override
   _LoginPageState createState() => _LoginPageState();
 }
 class _LoginPageState extends State<LoginPage> {
   bool passwordVisible = false;
+  TextEditingController NIS = TextEditingController();
+  TextEditingController Pass = TextEditingController();
+   
   void togglePassword() {
     setState(() {
       passwordVisible = !passwordVisible;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,20 +37,24 @@ class _LoginPageState extends State<LoginPage> {
           padding: EdgeInsets.fromLTRB(24, 40, 24, 0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
+            children:<Widget>[
+              SizedBox(
+                height: 32,
+              ),
+              Form(child: Column(),),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'APP Flutter\nLogin',
+                    'Login',
                     style: heading2.copyWith(color: textBlack),
                   ),
                   SizedBox(height: 20,),
                   Image.asset(
-                    'assets/images/accent.png',
+                    "asset/image/login_img.png",
                     width: 99,
                     height: 4,
-                  )
+                  ),
                 ],
               ),
               SizedBox(height: 48,),
@@ -94,10 +110,20 @@ class _LoginPageState extends State<LoginPage> {
                 ],
               ),
               SizedBox(height: 32,),
-              CustomPrimaryButton(
+              GestureDetector(
+              child: CustomPrimaryButton(
                 buttonColor: primaryBlue,
                 textValue: 'Login',
-                textColor: Colors.white,
+                textColor: Colors.white, 
+                 onPressed: () { 
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: 
+                    (context) => LandingPage()
+                    )
+                  );
+                 },
+              )
               ),
               SizedBox(height: 24,),
               Center(
@@ -110,7 +136,7 @@ class _LoginPageState extends State<LoginPage> {
               CustomPrimaryButton(
                 buttonColor: colorLight,
                 textValue: 'Login with Google',
-                textColor: textBlack,
+                textColor: textBlack, onPressed: () {  },
               ),
               SizedBox(height: 50,),
               Row(

@@ -1,7 +1,16 @@
+
+import 'dart:html';
+import 'dart:convert';
+
+import 'package:Delon/login_view.dart';
 import 'package:flutter/material.dart';
 import 'package:Delon/theme.dart';
+import 'package:Delon/landing.dart';
+import 'package:flutter/material.dart';
+
 import 'package:Delon/widgets/custom_checkbox.dart';
 import 'package:Delon/widgets/primary_button.dart';
+
 class RegisterPage extends StatefulWidget {
   const RegisterPage({ Key? key }) : super(key: key);
   @override
@@ -9,7 +18,12 @@ class RegisterPage extends StatefulWidget {
 }
 class _RegisterPageState extends State<RegisterPage> {
   bool passwordVisible = false;
-  bool passwordConfirmVisible = false;
+  // Bool IsLoading = false;
+  // final_formKey = GlobalKey<FormState>();
+  TextEditingController NIS = TextEditingController();
+  TextEditingController Nama = TextEditingController();
+  TextEditingController Password = TextEditingController();
+
   void togglePassword() {
     setState(() {
       passwordVisible = !passwordVisible;
@@ -29,17 +43,17 @@ class _RegisterPageState extends State<RegisterPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'APP Flutter\nRegister',
+                    'Register',
                     style: heading2.copyWith(color: textBlack),
                   ),
                   SizedBox(
                     height: 20,
                   ),
                   Image.asset(
-                    'assets/images/accent.png',
+                    "asset/image/regis_img.svg",
                     width: 99,
                     height: 4,
-                  )
+                  ),
                 ],
               ),
               SizedBox(height: 48,),
@@ -89,17 +103,17 @@ class _RegisterPageState extends State<RegisterPage> {
                         borderRadius: BorderRadius.circular(14)
                       ),
                       child: TextFormField(
-                        obscureText: !passwordConfirmVisible,
+                        obscureText: !passwordVisible,
                         decoration: InputDecoration(
                           hintText: 'Password Confirmation',
                           hintStyle: heading6.copyWith(color: textGrey),
                           suffixIcon: IconButton(
                             color: textGrey,
                             splashRadius: 1,
-                            icon: Icon(passwordConfirmVisible ? Icons.visibility_outlined : Icons.voice_over_off_outlined),
+                            icon: Icon(passwordVisible ? Icons.visibility_outlined : Icons.voice_over_off_outlined),
                             onPressed: () {
                               setState(() {
-                                passwordConfirmVisible = !passwordConfirmVisible;
+                                passwordVisible = !passwordVisible;
                               });
                             }, 
                           ),
@@ -135,7 +149,15 @@ class _RegisterPageState extends State<RegisterPage> {
               CustomPrimaryButton(
                 buttonColor: primaryBlue,
                 textValue: 'Register',
-                textColor: Colors.white,
+                textColor: Colors.white, onPressed: () { 
+                  Navigator.pop(
+                    context,
+                    MaterialPageRoute(builder: 
+                    (context) => LoginPage()
+                    )
+                  );
+                 },
+                
               ),
               SizedBox(height: 50,),
               Row(

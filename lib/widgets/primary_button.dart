@@ -6,8 +6,14 @@ class CustomPrimaryButton extends StatelessWidget {
   final Color buttonColor;
   final String textValue;
   final Color textColor;
+  final Function() onPressed;
   
-  const CustomPrimaryButton({ this.buttonColor=Colors.black, this.textValue='', this.textColor=Colors.black });
+ CustomPrimaryButton({ 
+  required this.buttonColor,
+  required this.textValue,
+  required this.textColor,
+  required this.onPressed,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +29,7 @@ class CustomPrimaryButton extends StatelessWidget {
         child: Material(
           color: Colors.transparent,
           child: InkWell(
-            onTap: () {},
+            onTap: onPressed,
             borderRadius: BorderRadius.circular(14),
             child: Center(
               child: Text(
